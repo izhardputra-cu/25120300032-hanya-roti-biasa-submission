@@ -1,0 +1,25 @@
+{
+  "name": "wad05-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "postbuild": "node -e \"require('node:fs').copyFileSync('node_modules/@fontsource-variable/plus-jakarta-sans/LICENSE', 'dist/plus-jakarta-sans-OFL.txt')\"",
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "test:e2e:production": "playwright test --config=playwright.production.config.js",
+    "test:e2e:cloud": "playwright test --config=playwright.cloud.config.js"
+  },
+  "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "5.3.0",
+    "vue": "3.5.44",
+    "vue-router": "4.6.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@vitejs/plugin-vue": "6.0.10",
+    "vite": "8.3.5"
+  }
+}

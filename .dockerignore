@@ -1,0 +1,45 @@
+# Docker build context denylist. The Dockerfile only reads an explicit
+# allowlist via COPY, but private, generated, and bulky files must not be sent
+# to the daemon at all. .gcloudignore has a different (allowlist) scope.
+.git
+.git/**
+.env
+.env.*
+.local
+**/.DS_Store
+**/__pycache__
+**/*.py[cod]
+**/.venv
+**/node_modules
+backend/tests
+backend/.pytest_cache
+backend/.ruff_cache
+backend/.mypy_cache
+frontend/dist
+frontend/test-results
+frontend/e2e
+frontend/e2e-production
+frontend/e2e-cloud
+frontend/playwright.config.js
+frontend/playwright.production.config.js
+frontend/playwright.cloud.config.js
+.claude
+.impeccable
+.pi
+docs
+AGENTS.md
+CLAUDE.md
+README.md
+DESIGN.md
+PRODUCT.md
+GLOSSARY.md
+scripts/gcp
+scripts/verify_skill_sources.py
+scripts/check-e2e-artifacts.sh
+scripts/check-cloud-state-privacy.py
+scripts/cloud_persistence.py
+scripts/cloud_smoke.py
+scripts/scan-artifacts.py
+frontend/e2e-containment
+frontend/playwright.containment.config.js
+frontend/src/assets/ATTRIBUTION.md

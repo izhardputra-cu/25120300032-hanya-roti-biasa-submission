@@ -1,0 +1,42 @@
+# Cloud Build upload set. Scope differs from .dockerignore (Docker daemon) and
+# .gitignore (Git): this file controls what leaves the machine for Cloud Build.
+#
+# `.gcloudignore` cannot express a pure nested allowlist because re-including a
+# directory re-includes its contents. The first block keeps only the source
+# roots, and the second block removes everything the image does not need.
+# `scripts/check-upload-manifest.sh` verifies the effective file list against a
+# strict allowlist, so a stray file fails the check instead of being uploaded.
+*
+!Dockerfile
+!.dockerignore
+!backend/
+!frontend/
+!scripts/
+
+# Not part of the image or the Vue build.
+backend/.venv/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/.mypy_cache/
+backend/tests/
+frontend/node_modules/
+frontend/e2e/
+frontend/e2e-production/
+frontend/e2e-cloud/
+frontend/dist/
+frontend/playwright.config.js
+frontend/playwright.production.config.js
+frontend/playwright.cloud.config.js
+**/__pycache__/
+**/.DS_Store
+scripts/gcp
+scripts/verify_skill_sources.py
+scripts/check-upload-manifest.sh
+scripts/check-e2e-artifacts.sh
+scripts/check-cloud-state-privacy.py
+scripts/cloud_persistence.py
+scripts/cloud_smoke.py
+scripts/scan-artifacts.py
+frontend/e2e-containment/
+frontend/playwright.containment.config.js
+frontend/src/assets/ATTRIBUTION.md
